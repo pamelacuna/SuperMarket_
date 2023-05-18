@@ -1,5 +1,12 @@
-
-import superMarket.*;
+import cart.exceptions.CartExceededCapacity;
+import cart.exceptions.EmptyCartException;
+import cart.exceptions.ExistentCartException;
+import cart.exceptions.NonExistentCart;
+import cart.interfaces.ICart;
+import item.exceptions.ExistentItemException;
+import item.exceptions.NonExistentItem;
+import superMarket.ISuperMarket;
+import superMarket.SuperMarket;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -32,7 +39,7 @@ public class Main {
 
     private static void execute_commands() {
         Scanner in = new Scanner(System.in);
-        SuperMarket sm = new SuperMarketClass;
+        ISuperMarket sm = new SuperMarket;
         Command comm = readCommand(in);
         while (!comm.equals(Command.EXIT)) {
             switch (comm) {
@@ -73,7 +80,7 @@ public class Main {
         return Command.UNKNOWN_COMMAND;
     }
 
-    private static void pay(Scanner in, SuperMarket sm) throws NonExistentCart {
+    private static void pay(Scanner in, ISuperMarket sm) throws NonExistentCart{
         String cartID;
 
         try {
@@ -86,13 +93,13 @@ public class Main {
         }
     }
 
-    private static void list(Scanner in, SuperMarket sm) {
-        List<Cart> listCartItems = new LinkedList<Cart>();
+    private static void list(Scanner in, ISuperMarket sm) {
+        List<ICart> listCartItems = new LinkedList<ICart>();
 
 
     }
 
-    private static void remove(Scanner in, SuperMarket sm) {
+    private static void remove(Scanner in, ISuperMarket sm) {
         String itemID, cartID;
 
         try {
@@ -109,7 +116,7 @@ public class Main {
         }
     }
 
-    private static void deposit(Scanner in, SuperMarket sm) {
+    private static void deposit(Scanner in, ISuperMarket sm) {
         String itemID, cartID;
 
         try {
@@ -128,7 +135,7 @@ public class Main {
 
     }
 
-    private static void createItem(Scanner in, SuperMarket sm) {
+    private static void createItem(Scanner in, ISuperMarket sm) {
         String itemID;
         int price, volume;
 
@@ -146,7 +153,7 @@ public class Main {
         }
     }
 
-    private static void createCart(Scanner in, SuperMarket sm) {
+    private static void createCart(Scanner in, ISuperMarket sm) {
         String cartID;
         int maxVolume;
 
