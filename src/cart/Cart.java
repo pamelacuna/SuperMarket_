@@ -41,4 +41,8 @@ public class Cart implements ICart {
     public Iterator<Item> listItems() {
         return null;
     }
+
+    public String getName() {
+        return cartID;
+    }
 }
