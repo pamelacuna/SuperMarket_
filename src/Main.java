@@ -1,15 +1,13 @@
-import cart.exceptions.CartExceededCapacity;
+import cart.exceptions.CartExceededCapacityException;
 import cart.exceptions.EmptyCartException;
 import cart.exceptions.ExistentCartException;
-import cart.exceptions.NonExistentCart;
+import cart.exceptions.NonExistentCartException;
 import cart.interfaces.ICart;
-import item.Item;
 import item.exceptions.ExistentItemException;
-import item.exceptions.NonExistentItem;
+import item.exceptions.NonExistentItemException;
 import superMarket.iterface.ISuperMarket;
 import superMarket.SuperMarket;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -83,7 +81,7 @@ public class Main {
         return Command.UNKNOWN_COMMAND;
     }
 
-    private static void pay(Scanner in, ISuperMarket sm) throws NonExistentCart{
+    private static void pay(Scanner in, ISuperMarket sm) throws NonExistentCartException {
         String cartID;
 
         try {
@@ -111,10 +109,10 @@ public class Main {
 
             sm.remove(itemID, cartID);
             System.out.println(Main.REMOVE_ITEM);
-        } catch (NonExistentCart exception) {
+        } catch (NonExistentCartException exception) {
             in.nextLine();
             System.out.println(Main.NON_EXISTENT_CART);
-        } catch (NonExistentItem exception) {
+        } catch (NonExistentItemException exception) {
             System.out.println(Main.NON_EXISTENT_ITEM);
         }
     }
@@ -127,12 +125,12 @@ public class Main {
             cartID = in.nextLine();
             sm.deposit(itemID, cartID);
             System.out.println(Main.ADD_ITEM);
-        } catch (NonExistentCart exception) {
+        } catch (NonExistentCartException exception) {
             in.nextLine();
             System.out.println(Main.NON_EXISTENT_CART);
         } catch (ExistentItemException exception) {
             System.out.println(Main.EXISTENT_ITEM);
-        } catch (CartExceededCapacity exception) {
+        } catch (CartExceededCapacityException exception) {
             System.out.println(Main.CART_EXCEEDED_CAPACITY);
         }
 

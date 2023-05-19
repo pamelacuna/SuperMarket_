@@ -2,18 +2,18 @@ package item;
 
 public class Item{
 
-    private String name;
+    private String itemID;
     private int volume;
     private int price;
 
     public Item(String name, int volume, int price){
-        this.name = name;
+        this.itemID = name;
         this.volume = volume;
         this.price = price;
     }
 
-    public String getName(){
-        return name;
+    public String getItemID(){
+        return itemID;
     }
 
     public int getVolume(){
@@ -27,7 +27,7 @@ public class Item{
     @Override
     public String toString(){
         return "Item{" +
-                "name='" + name + '\'' +
+                "name='" + itemID + '\'' +
                 ", volume=" + volume +
                 ", price=" + price +
                 '}';

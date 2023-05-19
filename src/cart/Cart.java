@@ -3,11 +3,12 @@ package cart;
 import cart.interfaces.ICart;
 import item.Item;
 
-import java.util.Iterator;
+import java.util.List;
 
 public class Cart implements ICart {
     private String cartID;
     private int cartCapacity;
+    private List<Item> items;
 
     public Cart(String cartID, int cartCapacity) {
         this.cartID = cartID;
@@ -22,27 +23,13 @@ public class Cart implements ICart {
         return cartCapacity;
     }
 
-    @Override
-    public void depositItem(Item item) {
-
-    }
-
-    @Override
-    public void removeItem(Item item) {
-
-    }
 
     @Override
     public boolean isFull() {
-        return false;
+        return items.size() == cartCapacity;
     }
 
-    @Override
-    public Iterator<Item> listItems() {
-        return null;
-    }
-
-    public String getName() {
-        return cartID;
+    public List<Item> getItems() {
+        return items;
     }
 }

@@ -1,11 +1,17 @@
 package superMarket.iterface;
 
-import cart.Cart;
 import item.Item;
 
 public interface ISuperMarket{
 
+    void depositItemIntoCart(String itemID, String cartID);
+
+    void removeItem(String itemID, String cartID);
+
+    void listItems(String cartID);
+
+
     void pay(String cartID);
 
-    void addItem(Item item);
+    void addItemToSuperMarket(String itemID);
 }
