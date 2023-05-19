@@ -1,6 +1,7 @@
 package cart;
 
 import cart.interfaces.ICart;
+import item.Item;
 
 import java.util.Iterator;
 

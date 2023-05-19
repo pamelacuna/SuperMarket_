@@ -3,11 +3,13 @@ import cart.exceptions.EmptyCartException;
 import cart.exceptions.ExistentCartException;
 import cart.exceptions.NonExistentCart;
 import cart.interfaces.ICart;
+import item.Item;
 import item.exceptions.ExistentItemException;
 import item.exceptions.NonExistentItem;
-import superMarket.ISuperMarket;
+import superMarket.iterface.ISuperMarket;
 import superMarket.SuperMarket;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,6 +23,7 @@ import java.util.Scanner;
 
 public class Main {
 
+
     private static final String CREATE_CART = "Carrinho criado com sucesso.";
     private static final String EXISTENT_CART = "Carrinho existente!";
     private static final String CREATE_ITEM = "Artigo criado com sucesso.";
@@ -28,7 +31,7 @@ public class Main {
     private static final String ADD_ITEM = "Artigo adicionado com sucesso.";
     private static final String NON_EXISTENT_CART = "Carrinho inexistente!";
     private static final String CART_EXCEEDED_CAPACITY = "Capacidade excedida!";
-    private static final String NON_EXISTENT_ITEM = "Artigo inexistente no carrinho!"
+    private static final String NON_EXISTENT_ITEM = "Artigo inexistente no carrinho!";
     private static final String REMOVE_ITEM = "Artigo removido com sucesso.";
     private static final String EMPTY_CART = "Carrinho vazio!";
     private static final String EXIT_MESSAGE = "Volte sempre.";
@@ -39,7 +42,7 @@ public class Main {
 
     private static void execute_commands() {
         Scanner in = new Scanner(System.in);
-        ISuperMarket sm = new SuperMarket;
+        ISuperMarket sm = new SuperMarket();
         Command comm = readCommand(in);
         while (!comm.equals(Command.EXIT)) {
             switch (comm) {
